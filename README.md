@@ -22,4 +22,11 @@ computador. Um microcontrolador PIC16F1827/I-P, alimentado com 5V, controla todo
 O sistema também possui um programador SNAP da Microchip e um Analisador Lógico de 8 canais,
 que permitem programar e debuggar o firmware e visualizar os sinais digitais envolvidos.
 
+O projeto foi realizado por 4 alunos do curso de engenharia eletronica, dividido nas respectivas pasta com os nomes e tendo como as devidas atividades desenvolvidas:
+<ul>
+  <li>DOUGLAS: Medição de altura da bola</li>
+  <li>FERNANDA: Comunicação serial-BT</li>
+  <li>MATHEUS: Movimento do motor de passo e detecção do fim de curso</li>
+  <li>PEDRO: Controle PI ou PID</li>
+</ul>
 Objetivo final conforme a imagem:<img width="875" height="740" alt="image" src="https://github.com/user-attachments/assets/14256940-2174-4fa8-963d-095cd81767e7" />
