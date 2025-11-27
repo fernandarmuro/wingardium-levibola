@@ -9,19 +9,21 @@ O firmware desenvolvido será implementado em um microcontrolador PIC16F1827/I-P
 
 O projeto será dividido em 4 módulos, os quais o desenvolvimento, teste e simulação do código será de responsabilidade individual à cada integrante do grupo e, ao final, será integrado e testado em um protótipo físico disponibilizado para validadação e verificação do firmware. 
 
-O projeto e suas atividades estão divididas da seguinte maneira:
+O projeto e as atividades de cada integrante seguem a seguinte divisão, cujo detalhamento se encontra na pasta nominal de cada integrante:
 
-	- Douglas Rodrigues:
+	1. [Douglas Rodrigues](Douglas/):
 	
-	- Medição de altura da bola e temperatura;
-	
-	- Implementção da ativação do trigger;
-	
-	- Medição do tempo de voo do sinal echo;
+	- Medição de altura da bola e temperatura.
 			
-	- Obter uma resolução mínima de 0,1mm para medição da altura da bola.
-			
-  <li>FERNANDA: Comunicação serial-BT</li>
-  <li>MATHEUS: Movimento do motor de passo e detecção do fim de curso</li>
-  <li>PEDRO: Controle PI ou PID</li>
-</li>
+  	2. Fernanda Muro:
+	
+	- Comunicação bluetooth.
+	
+  	3. Matheus Neves:
+
+	- Controle dos atuadores (ventoinha e válvula).
+
+	4. Pedro Barros:
+
+	- Algoritmo de controle PID
+	
