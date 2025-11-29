@@ -4,7 +4,7 @@ Para o projeto bola no tudo, será implementado um sistema de comunicação seri
 
 <div align="center">
   
-  <img src="Fernanda/Diagrama de blocos - conexão bt.png" alt="Diagrama da FSM do Bola no Tubo" width="600"/> 
+  <img src="PIC16F1827.png" alt="Diagrama da FSM do Bola no Tubo" width="600"/> 
   
   <em>Figura 1: Diagrama de blocos do projeto bola no tubo.</em>
   
