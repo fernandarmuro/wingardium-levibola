@@ -20,3 +20,4 @@ Na figura 2, está apresentando o PIC16F1827 com as conexões Tx e Rx nos pinos 
   
 </div>
 
+<H2>Comunicação serial <H2>
