@@ -1,10 +1,10 @@
-
+<H1>COMINUCAÇÃO BLUETOOTH</H1>
 
 Para o projeto bola no tudo, será implementado um sistema de comunicação serial e assíncrono por meio do módulo externo HC-05, capaz de estabelecer conexões via bluetooth Serial Port Protocol (SSP) e o módulo periférico Enhanced Universal Syncronous Asyncronous Receiver Trasmitter (EUSART) do PIC16F1827 através dos pinos Tx e Rx para o envio e recepção dos dados de controle entre o protótipo e um dispositivo externo (celular ou computador).
 
 <div align="center">
   
-  <img src="https://github.com/fernandarmuro/wingardium-levibola/blob/be5bb0134b2ad3a82d7c9f4d4b3726b2a49a7895/Diagrama_de_blocos.png" alt="Diagrama da FSM do Bola no Tubo" width="600"/> 
+  <img src="Fernanda/Diagrama de blocos - conexão bt.png" alt="Diagrama da FSM do Bola no Tubo" width="600"/> 
   
   <em>Figura 1: Diagrama de blocos do projeto bola no tubo.</em>
   
