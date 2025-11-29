@@ -8,15 +8,15 @@ Na Figura 1, está apresentado o esquemático do módulo HC-05 e as conexões Tx
   
   <img src="DB_CBT.png" alt="Diagrama da FSM do Bola no Tubo" width="500"/> 
   
-  <em>Figura 1: Esquemático do HC-05 e conexões Tx e Rx.</em>
+  <em>Figura 1: Esquemático do HC-05 e conexões Rx e Tx.</em>
   
 </div>
-Na figura 2, está apresentando o PIC16F1827 com as conexões Tx e Rx nos pinos RB1 e RB2.
+Na figura 2, está apresentando o PIC16F1827 evidenciando apenas as conexões Rx e Tx nos pinos RB1 e RB2 sendo, essas, a parte de interesse desse projeto  .
 <div align="center">
   
   <img src="PIC16F1827.png" alt="Diagrama da FSM do Bola no Tubo" width="600"/> 
   
-  <em>Figura 1: Diagrama de blocos do projeto bola no tubo.</em>
+  <em>Figura 1: Esquemático do PIC16F1827 e conexões Rx e Tx.</em>
   
 </div>
 
