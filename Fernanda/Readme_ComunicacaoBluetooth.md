@@ -9,3 +9,11 @@ Para o projeto bola no tudo, será implementado um sistema de comunicação seri
   <em>Figura 1: Diagrama de blocos do projeto bola no tubo.</em>
   
 </div>
+
+<div align="center">
+  
+  <img src="DB_CBT.png" alt="Diagrama da FSM do Bola no Tubo" width="600"/> 
+  
+  <em>Figura 1: Diagrama de blocos do projeto bola no tubo.</em>
+  
+</div>
