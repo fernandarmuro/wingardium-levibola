@@ -7,7 +7,7 @@ O firmware desenvolvido deve cumprir os seguintes requisitos:
 1. Configuração UART:
    
    - Configuração da comunicação serial assíncrona com baud rate de 115200 BPS, 8 bits de dados contendo 1 bit para indicar o início e o fim da mensagem e sem paridade;
-   -  Implementação da detecção do fim do quadro de comunicação por timeout definido por tempo (40 ms) utilizando interrupções de recepção e transmissão;
+   -  Implementação da detecção do fim do quadro decomunicação por timeout definido por tempo (40 ms) utilizando a interrupção;
 
 3. Transmissão entre o microcontrolador e o dispositivo externo:
    - Envio do byte de dados codificado para as variáveis do projeto: modo de funcionamento, setpoint e medição da altura, no formato hexadecimal como inteiro em big-endian a cada 100ms;
@@ -15,7 +15,6 @@ O firmware desenvolvido deve cumprir os seguintes requisitos:
 4. Recepção entre o dispositivo externo e o microcontrolador:
    - Recepção dos dados codificados para as variáveis do projeto: setpoint da altura, setpoint da posição da válvula e setpoint do ciclo útil do motor, no formato hexadecimal como inteiro em big-endian.
 
-, tem-se como 
 Na Figura 1, está apresentado o esquemático do módulo HC-05 e as conexões Tx e Rx com o módulo bluetooth J2.
 
 <div align="center">
