@@ -46,26 +46,16 @@ A comunicação e transferência dos dados nestre trabalho será feita utilizand
 
 Os dados que serão utilizados neste trabalho estão descritos e, deverão ser recebidos/enviados a depender do modo de operação definido pelo ususário. Todos os dados devem estar no formato hexadecimal como inteiro big-endian. Todos os dados tem 2 bytes de tamanho, com exceção do dado A e seus modos, que possui 1 byte de tamanho. 
 
-A. Modo de funcionamento:
-
-   - manual (A0);
-   - Ventoinha (A1);
-   - Válvula (A2);
-   - Reset (A3).
-
-B. Setpoint da altura (mm);
-
-C. Medição da altura (mm);
-
-D. Valor médio da medição de tempo de voo (contagem do temporizador);
-
-E. Temperatura (x10 °C);
-
-F. Setpoint da posição da válvula (passos do motor);
-
-G. Posição da válvula (passos do motor);
-
-H. Ciclo útil do motor (sem converter para %, ou seja entre 0 e 1023);
+| Dado 	|                                      Descrição                                      	|               I/O dado               	|
+|:----:	|:-----------------------------------------------------------------------------------:	|:------------------------------------:	|
+|   A  	| Modo de funcionamento<br>A0 = manual; A1 = ventoinha;<br>A2 = válvula e A3 = reset. 	| Entrada via software<br>pelo usuário 	|
+|   B  	|                                 Setpoint altura (mm)                                	| Entrada via software<br>pelo usuário 	|
+|   C  	|                                Medição da altura (mm)                               	|  Entrada leitura do sensor XXXXX  	|
+|   D  	|                             Valor médio do tempo de voo                             	|   Saída do cálculo via<br>software   	|
+|   E  	|                                     Temperatura                                     	|   Entrada leitura do sensor XXXX  	|
+|   F  	|                         Setpoint da válvula (motor de passo)                        	|  Entrada usuário via<br>software  	|
+|   G  	|                   Medida da posição da válvula<br>(motor de passo)                  	|   Entrada leitura do sensor XXXX  	|
+|   H  	|                        Valor do ciclo útil do PWM (0 a 1023)                        	|   Saída do cálculo via software   	|
 
 Nas Tabelas XX e XX, estão apresentados, respectivamente, os quadro de comunicação para recepção (pc/usuário -> micro) e transmissão de dados (micro -> pc/usuário).
 
