@@ -24,109 +24,109 @@ O projeto e as atividades de cada integrante seguem a seguinte divisão:
 
    1.1. Medição de Altura (Sensor HC-SR04):
    
-      - Implementar a Ativação do Trigger;
+    - Implementar a Ativação do Trigger;
       
-      - Medir o Tempo de Voo do Sinal Echo;
+    - Medir o Tempo de Voo do Sinal Echo;
       
-      - Assegurar resolução suficiente para detectar variações de 0,1 mm na faixa de 3 mm a 460 mm;
+    - Assegurar resolução suficiente para detectar variações de 0,1 mm na faixa de 3 mm a 460 mm;
       
-      - Assegurar um período de medição maior ou igual a 10 ms para evitar erros por reflexões.
+    - Assegurar um período de medição maior ou igual a 10 ms para evitar erros por reflexões.
 
 
  		1.2. Compensação de Velocidade do Som;
     
-      - Aquisição da Temperatura (Sensor LM35):
+    - Aquisição da Temperatura (Sensor LM35):
       
- 			- Leitura do sensor de temperatura para obtenção do valor em ∘C;
+    - Leitura do sensor de temperatura para obtenção do valor em ∘C;
     
-      - Compensação de temperatura utilizando uma tabela de busca (look-up) para compensar a velocidade do som na faixa de 0∘C a 50∘C com resolução de 1∘C;
+    - Compensação de temperatura utilizando uma tabela de busca (look-up) para compensar a velocidade do som na faixa de 0∘C a 50∘C com resolução de 1∘C;
       
- 			- Correção do valor da temperatura utilizando a fórmula de compensação disponível no roteiro do experimento;​
+    - Correção do valor da temperatura utilizando a fórmula de compensação disponível no roteiro do experimento;​
       
-      - Calcular a altura final utilizando o Tempo de Voo e a Velocidade do Som Compensada.​
+    - Calcular a altura final utilizando o Tempo de Voo e a Velocidade do Som Compensada.​
      
-2. Fernanda Muro: Comunicação bluetooth.
+  2. Fernanda Muro: Comunicação bluetooth.
 
    2.1. Configuração UART:
    
-     - Configuração da comunicação serial assíncrona com baud rate de 115200 BPS, 8 bits de dados contendo 1 bit para indicar o início e o fim da mensagem e sem paridade;
+   - Configuração da comunicação serial assíncrona com baud rate de 115200 BPS, 8 bits de dados contendo 1 bit para indicar o início e o fim da mensagem e sem paridade;
      
-     - Implementação da detecção do fim do quadro de comunicação por timeout definido por tempo, 40ms, utilizando a interrupção;
+   - Implementação da detecção do fim do quadro de comunicação por timeout definido por tempo, 40ms, utilizando a interrupção;
 
-    2.2. Transmissão entre o microcontrolador e o dispositivo externo:
+   2.2. Transmissão entre o microcontrolador e o dispositivo externo:
 
-       - Estruturar o quadro de transmissão com 15 bytes de tamanho, sendo: 1 byte para modo e 2 bytes para cada um dos 7 dados: setpoint e medição da altura, valor médio do tempo de vôo, temperatura, setpoint e posição da válvula (passo do motor) e valor do ciclo útil;
+   - Estruturar o quadro de transmissão com 15 bytes de tamanho, sendo: 1 byte para modo e 2 bytes para cada um dos 7 dados: setpoint e medição da altura, valor médio do tempo        de vôo, temperatura, setpoint e posição da válvula (passo do motor) e valor do ciclo útil;
 
-     - Envio do quadro completo de dados a cada 100ms no formato hexadecimal como inteiro em big-endian;
+   - Envio do quadro completo de dados a cada 100ms no formato hexadecimal como inteiro em big-endian;
   
-    2.3. Recepção entre o dispositivo externo e o microcontrolador:
+   2.3. Recepção entre o dispositivo externo e o microcontrolador:
    
-       - Estruturar o quadro de recepção com 7 bytes de tamanho, sendo: 1 byte para modo e 2 bytes para cada um dos 3 dados> altura, posição da válcula (passo do motor) e ciclo útil do motor;
+   - Estruturar o quadro de recepção com 7 bytes de tamanho, sendo: 1 byte para modo e 2 bytes para cada um dos 3 dados> altura, posição da válcula (passo do motor) e ciclo útil      do motor;
    
-       - Recepção dos dados codificados para as variáveis do projeto no formato hexadecimal como inteiro em big-endian.
+     - Recepção dos dados codificados para as variáveis do projeto no formato hexadecimal como inteiro em big-endian.
 
    
-2. Matheus Neves: Controle dos atuadores (ventoinha e válvula).
+  3. Matheus Neves: Controle dos atuadores (ventoinha e válvula).
 
-    3.1. Geração do PWM;
+  3.1. Geração do PWM;
    
- 				- Gerar o sinal de Modulação por Largura de Pulso (PWM) para o sinal Vent;
+  - Gerar o sinal de Modulação por Largura de Pulso (PWM) para o sinal Vent;
         
- 				- Configurar o PWM com frequência próxima a 250 Hz;
+  - Configurar o PWM com frequência próxima a 250 Hz;
         
- 				- Configurar o PWM com 10 bits de resolução (ciclo útil entre 0 e 1023).
+  - Configurar o PWM com 10 bits de resolução (ciclo útil entre 0 e 1023).
 
 
- 			* Controle da Válvula Motorizada (Motor de Passo 28BYJ-48)
+  3.2 Controle da Válvula Motorizada (Motor de Passo 28BYJ-48)
       
- 				- Implementar o Movimento por Passos:
+  - Implementar o Movimento por Passos:
  			
-        - Implementar a sequência de ativação dos sinais (SM1, SM2, SM3, SM4) para movimento de abertura (horário) e a sequência inversa para fechamento (anti-horário).
+  - Implementar a sequência de ativação dos sinais (SM1, SM2, SM3, SM4) para movimento de abertura (horário) e a sequência inversa para fechamento (anti-horário).
  				
-        - criar variáveis SM1 (ABRE), SM2 (FECHA), SM3 (SENTIDO HORARIO), SM4 (SENTIDO ANTI HORARIO) (DEFINIR O TIPO)
+  - Criar variáveis SM1 (ABRE), SM2 (FECHA), SM3 (SENTIDO HORARIO), SM4 (SENTIDO ANTI HORARIO) (DEFINIR O TIPO)
  				
-        - Garantir um tempo de passo ≥3 ms. (TIMER 1)
+  - Garantir um tempo de passo ≥3 ms. (TIMER 1)
  				
-        - Limitar a quantidade máxima de passos em 420 (aberta ao fechada).
+  - Limitar a quantidade máxima de passos em 420 (aberta ao fechada).
  				
-        - Implementar lógica de detenção de movimento para evitar travamento nos extremos.
+  - Implementar lógica de detenção de movimento para evitar travamento nos extremos.
  				
- 		3.3: Detecção de Limite da Válvula (TCRT-5000):
+  3.3: Detecção de Limite da Válvula (TCRT-5000)
  				
-        - Leitura da tensão analógica através do sensor TCRT-5000 para detectar a posição de fim de curso (totalmente aberta).
+  - Leitura da tensão analógica através do sensor TCRT-5000 para detectar a posição de fim de curso (totalmente aberta).
  					
- 				- Inicialização da posição da válvula a partir do valor mínimo de tensão (detecção de limite de abertura).
+  - Inicialização da posição da válvula a partir do valor mínimo de tensão (detecção de limite de abertura).
 
    
-8. Pedro Barros: Algoritmo de controle PID.
+  4. Pedro Barros: Algoritmo de controle PID.
 
-    8.1: Implementação do Algoritmo PI/PID Posicional;
+    4.1: Implementação do Algoritmo PI/PID Posicional;
       
  		- Implementar o cálculo do erro;
     
 ​		- Implementar a equação de controle;
  
- 	  8.2: Gerenciamento da Ação de Controle;
+ 	  4.2: Gerenciamento da Ação de Controle;
 
-    8.3: Limitação da Saída do Controlador;
+    4.3: Limitação da Saída do Controlador;
     
  	  8.4: Implementação dos Modos de Operação:
 
  		- A0:
     
-      - Modo manual: atribuir setpoints (válvula/ventoinha) diretamente aos atuadores, ignorando o controlador;
+    - Modo manual: atribuir setpoints (válvula/ventoinha) diretamente aos atuadores, ignorando o controlador;
       
- 			- A1:
+    - A1:
       
-        - Modo Ventoinha: atuação do controlador sobre o ciclo útil da ventoinha.
+    - Modo Ventoinha: atuação do controlador sobre o ciclo útil da ventoinha.
       
-   		- A2: 
+    - A2: 
       
-        - Modo Válvula: atuação do controlador sobre a posição da válvula.
+    - Modo Válvula: atuação do controlador sobre a posição da válvula.
         
- 		  - A3:
+    - A3:
       
-        - Modo reset: implementa o reset do microcontrolador por software.
+    - Modo reset: implementa o reset do microcontrolador por software.
 
 
 O detalhamento de cada módulo desenvolvido no projeto, assim como os arquivos mcc.c e mcc.h de cada um, estão disponíveis nas pastas nominais de cada integrante.
