@@ -33,7 +33,7 @@ O projeto e as atividades de cada integrante seguem a seguinte divisão:
     - Assegurar um período de medição maior ou igual a 10 ms para evitar erros por reflexões.
 
 
- 		1.2. Compensação de Velocidade do Som;
+ 		1.2. Compensação de Velocidade do Som:
     
     - Aquisição da Temperatura (Sensor LM35):
       
@@ -47,23 +47,23 @@ O projeto e as atividades de cada integrante seguem a seguinte divisão:
      
   2. Fernanda Muro: Comunicação bluetooth.
 
-   2.1. Configuração UART:
+  2.1. Configuração UART:
    
-   - Configuração da comunicação serial assíncrona com baud rate de 115200 BPS, 8 bits de dados contendo 1 bit para indicar o início e o fim da mensagem e sem paridade;
+  - Configuração da comunicação serial assíncrona com baud rate de 115200 BPS, 8 bits de dados contendo 1 bit para indicar o início e o fim da mensagem e sem paridade;
      
-   - Implementação da detecção do fim do quadro de comunicação por timeout definido por tempo, 40ms, utilizando a interrupção;
+  - Implementação da detecção do fim do quadro de comunicação por timeout definido por tempo, 40ms, utilizando a interrupção;
 
-   2.2. Transmissão entre o microcontrolador e o dispositivo externo:
+  2.2. Transmissão entre o microcontrolador e o dispositivo externo:
 
-   - Estruturar o quadro de transmissão com 15 bytes de tamanho, sendo: 1 byte para modo e 2 bytes para cada um dos 7 dados: setpoint e medição da altura, valor médio do tempo        de vôo, temperatura, setpoint e posição da válvula (passo do motor) e valor do ciclo útil;
+  - Estruturar o quadro de transmissão com 15 bytes de tamanho, sendo: 1 byte para modo e 2 bytes para cada um dos 7 dados: setpoint e medição da altura, valor médio do tempo        de vôo, temperatura, setpoint e posição da válvula (passo do motor) e valor do ciclo útil;
 
-   - Envio do quadro completo de dados a cada 100ms no formato hexadecimal como inteiro em big-endian;
+  - Envio do quadro completo de dados a cada 100ms no formato hexadecimal como inteiro em big-endian;
   
-   2.3. Recepção entre o dispositivo externo e o microcontrolador:
+  2.3. Recepção entre o dispositivo externo e o microcontrolador:
    
-   - Estruturar o quadro de recepção com 7 bytes de tamanho, sendo: 1 byte para modo e 2 bytes para cada um dos 3 dados> altura, posição da válcula (passo do motor) e ciclo útil      do motor;
+  - Estruturar o quadro de recepção com 7 bytes de tamanho, sendo: 1 byte para modo e 2 bytes para cada um dos 3 dados> altura, posição da válcula (passo do motor) e ciclo útil      do motor;
    
-     - Recepção dos dados codificados para as variáveis do projeto no formato hexadecimal como inteiro em big-endian.
+  - Recepção dos dados codificados para as variáveis do projeto no formato hexadecimal como inteiro em big-endian.
 
    
   3. Matheus Neves: Controle dos atuadores (ventoinha e válvula).
@@ -75,7 +75,6 @@ O projeto e as atividades de cada integrante seguem a seguinte divisão:
   - Configurar o PWM com frequência próxima a 250 Hz;
         
   - Configurar o PWM com 10 bits de resolução (ciclo útil entre 0 e 1023).
-
 
   3.2 Controle da Válvula Motorizada (Motor de Passo 28BYJ-48)
       
@@ -100,33 +99,33 @@ O projeto e as atividades de cada integrante seguem a seguinte divisão:
    
   4. Pedro Barros: Algoritmo de controle PID.
 
-    4.1: Implementação do Algoritmo PI/PID Posicional;
+  4.1: Implementação do Algoritmo PI/PID Posicional;
       
- 		- Implementar o cálculo do erro;
+  - Implementar o cálculo do erro;
     
-​		- Implementar a equação de controle;
+​	- Implementar a equação de controle;
  
- 	  4.2: Gerenciamento da Ação de Controle;
+  4.2: Gerenciamento da Ação de Controle;
 
-    4.3: Limitação da Saída do Controlador;
+  4.3: Limitação da Saída do Controlador;
     
- 	  8.4: Implementação dos Modos de Operação:
+  4.4: Implementação dos Modos de Operação:
 
- 		- A0:
+  - A0:
     
-    - Modo manual: atribuir setpoints (válvula/ventoinha) diretamente aos atuadores, ignorando o controlador;
+  - Modo manual: atribuir setpoints (válvula/ventoinha) diretamente aos atuadores, ignorando o controlador;
       
-    - A1:
+  - A1:
       
-    - Modo Ventoinha: atuação do controlador sobre o ciclo útil da ventoinha.
+  - Modo Ventoinha: atuação do controlador sobre o ciclo útil da ventoinha.
       
-    - A2: 
+  - A2: 
       
-    - Modo Válvula: atuação do controlador sobre a posição da válvula.
+  - Modo Válvula: atuação do controlador sobre a posição da válvula.
         
-    - A3:
+  - A3:
       
-    - Modo reset: implementa o reset do microcontrolador por software.
+  - Modo reset: implementa o reset do microcontrolador por software.
 
 
 O detalhamento de cada módulo desenvolvido no projeto, assim como os arquivos mcc.c e mcc.h de cada um, estão disponíveis nas pastas nominais de cada integrante.
