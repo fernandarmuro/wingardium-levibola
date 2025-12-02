@@ -20,19 +20,76 @@ O projeto será dividido em 4 módulos, os quais o desenvolvimento, teste e simu
 
 O projeto e as atividades de cada integrante seguem a seguinte divisão:
 
-1. Douglas Rodrigues:
-   
-   - Medição da altura da bola e temperatura.
-     
-3. Fernanda Muro:
-   
-   - Comunicação bluetooth.
-   
-5. Matheus Neves:
+1. Douglas Rodrigues: Medição da altura da bola e temperatura.
 
-   - Controle dos atuadores (ventoinha e válvula).
+   1.1. Medição de Altura (Sensor HC-SR04):
    
-7. Pedro Barros:
+ 			- Implementar a Ativação do Trigger;
+      
+ 			- Medir o Tempo de Voo do Sinal Echo;
+      
+      - Assegurar resolução suficiente para detectar variações de 0,1 mm na faixa de 3 mm a 460 mm;
+      
+ 			- Assegurar um período de medição maior ou igual a 10 ms para evitar erros por reflexões.
+
+
+ 		1.2. Compensação de Velocidade do Som:
+
+ 			- Aquisição da Temperatura (Sensor LM35):
+      
+ 			- Leitura do sensor de temperatura para obtenção do valor em ∘C;
+      
+      - Compensação de temperatura utilizando uma tabela de busca (look-up) para compensar a velocidade do som na faixa de 0∘C a 50∘C com resolução de 1∘C;
+      
+ 			- Correção do valor da temperatura utilizando a fórmula de compensação disponível no roteiro do experimento;​
+      
+      - Calcular a altura final utilizando o Tempo de Voo e a Velocidade do Som Compensada.​
+     
+2. Fernanda Muro: Comunicação bluetooth.
+
+   2.1. Configuração UART:
+   
+     - Configuração da comunicação serial assíncrona com baud rate de 115200 BPS, 8 bits de dados contendo 1 bit para indicar o início e o fim da mensagem e sem paridade;
+     - Implementação da detecção do fim do quadro de comunicação por timeout definido por tempo, 40ms, utilizando a interrupção;
+
+    2.2. Transmissão entre o microcontrolador e o dispositivo externo:
+
+       - Estruturar o quadro de transmissão com 15 bytes de tamanho, sendo: 1 byte para modo e 2 bytes para cada um dos 7 dados: setpoint e medição da altura, valor médio do tempo de vôo, temperatura, setpoint e posição da válvula (passo do motor) e valor do ciclo útil;
+       - Envio do quadro completo de dados a cada 100ms no formato hexadecimal como inteiro em big-endian;
+  
+    2.3. Recepção entre o dispositivo externo e o microcontrolador:
+       - Estruturar o quadro de recepção com 7 bytes de tamanho, sendo: 1 byte para modo e 2 bytes para cada um dos 3 dados> altura, posição da válcula (passo do motor) e ciclo útil do motor;
+       - Recepção dos dados codificados para as variáveis do projeto no formato hexadecimal como inteiro em big-endian.
+
+   
+2. Matheus Neves: Controle dos atuadores (ventoinha e válvula).
+
+    3.1. Geração do PWM;
+   
+ 				- Gerar o sinal de Modulação por Largura de Pulso (PWM) para o sinal Vent.
+ 				- Configurar o PWM com frequência próxima a 250 Hz.
+ 				- Configurar o PWM com 10 bits de resolução (ciclo útil entre 0 e 1023).
+
+
+ 			* Controle da Válvula Motorizada (Motor de Passo 28BYJ-48)
+ 				- Implementar o Movimento por Passos:
+ 					var = posicao_motor
+ 				- Implementar a sequência de ativação dos sinais (SM1, SM2, SM3, SM4) para movimento de abertura (horário) e a sequência inversa para fechamento (anti-horário).
+ 					- criar variáveis SM1 (ABRE), SM2 (FECHA), SM3 (SENTIDO HORARIO), SM4 (SENTIDO ANTI HORARIO) (DEFINIR O TIPO)
+ 				- Garantir um tempo de passo ≥3 ms. (TIMER 1)
+ 				- Limitar a quantidade máxima de passos em 420 (aberta ao fechada).
+ 				- Implementar lógica de detenção de movimento para evitar travamento nos extremos.
+ 				var_saida = dutycycle_ventoinha
+
+ 		3.3. Detecção de Limite da Válvula (TCRT-5000):
+ 				* Leitura do Sensor TCRT-5000:
+ 					- Ler a tensão analógica do sensor para detectar a posição de fim de curso (totalmente aberta).
+ 						ADC E FVR; var = posicao_valvula (saida)
+ 				* Inicialização da Posição:
+ 					- Utilizar a detecção de limite (valor mínimo de tensão) para inicializar a posição da válvula.
+
+   
+8. Pedro Barros:
 
    - Algoritmo de controle PID.
 
